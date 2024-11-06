@@ -1,0 +1,639 @@
+
+:root {
+    --blue-text-btn: #08A6E4;
+    --white-bg: #FFFFFF;
+    --grey-borders: #00000029;
+    --grey-text-menu: #A5A5A5;
+    --black-text: #000000;
+    --light-blue-shadow: #07ACE629;
+    --red-elements: #FB3B64;
+    --green-elements: #55DFB4;
+    --white-bg-second:#F7F7F7;
+    --light-grey-borders:#E8E9ED;
+    --blue-elements-borders: #07ACE6;
+    --light-pink-bordres:#F9043629;
+    --dark-borders:#13253B;
+    --red-small-btn:#EB476E;
+    --pink-shadow:#FF091129;
+    --grey-line:#95989A;
+    --grey-text-checkbox:#707070;
+}
+
+.page {
+    border: 1px solid var(--dark-borders);
+}
+
+.page {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 1352px;
+    text-decoration: none;
+    background-color: var(--white-bg);
+
+}
+.container-header {
+    width: 1352px;
+    box-shadow: 0px 3Px 6px #00000029;
+    opacity:1;
+}
+
+.column {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo {
+    color:var(--blue-text-btn);
+    font: normal normal 300 32px/37px Raleway;
+    width: 20vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.container-header-nav {
+    width: 40vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    font: normal normal bold 11px/15px Open Sans;
+    letter-spacing: 3.28px;
+    text-decoration: none;
+}
+
+.header-nav-item {
+    text-decoration: none;
+}
+
+.header-nav-item:hover {
+    padding-top: 4px;
+    color:var(--black-text);
+    border-bottom: solid 4px var(--blue-elements-borders);
+}
+
+/*------------tady začíná intro 1---------------*/
+.intro {
+    width: 1352px;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #00000029; 
+}
+
+.h1 {
+    margin-top: 60px;
+    top:2OOpx;
+    left: 700px;
+    width: 226px;
+    height: 49px;
+    font-size: 49px;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+    color:var(--black-text);
+}
+
+.text {
+    width: 384px;
+    height: 22px;
+    color:var(--black-text);
+    font-family: "Source Sans 3", serif;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn {
+     background: #08A6E4 0% 0% no-repeat padding-box;
+     box-shadow: 5px 10px 14px #07ACE629;
+     border-radius: 40px;
+     opacity: 1;
+     left: 395px;
+     width: 330px;
+     height: 24px;
+     padding-top: 12px;
+     padding-bottom: 12px;
+     text-align: center;
+     font-size: 18px;
+     margin-top: 25px;
+     font: normal normal bold 16px/22px Open Sans;
+     color:var(--white-bg);
+}
+.images {
+    background-image: url(../images/Background.png);
+    margin-top: 30px;
+}
+/*-----------------------tady začíná second.intro----------------------*/
+
+.second-intro {
+    background-color: var(--white-bg);
+    border: 2px solid var(--grey-borders);
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:1352px;
+}
+
+.column-intro-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top:50px;
+    border-radius: 2px solid red;
+}
+
+
+.h2 {
+    padding-top: 90px;
+    font: normal normal normal 30px/42px Raleway;
+}
+/* --------------------tady začínají přehledy------------------------*/
+.column-intro {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 150px;
+}
+
+.icon-intro {
+    width: 62px;
+    height: 62px;
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.intro-blue {
+    background-color: var(--blue-text-btn);
+}
+
+.intro-red {
+    background-color: var(--red-elements);
+}
+
+.intro-green {
+    background-color: var(--green-elements);
+}
+
+.column-intro-icon {
+    width: 44px;
+    height: 52px;
+    margin-left:60px;
+}
+
+.number{
+    padding-top: 20px;
+    text-align: center;
+    font: normal normal 800 20px/24px Raleway;
+    letter-spacing: 5.96px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.text {
+    align-self: center;
+    font: normal normal normal 17px/20px Raleway;
+    letter-spacing: 0px;
+    color: #A5A5A5;
+    opacity: 1;
+}
+/*---------------------------tady začíná Main menu-------------*/
+.main-box {
+    width: 1352px;
+    box-shadow: 0px 3Px 6px #00000029;
+    opacity:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white-bg-second);
+}
+
+.main-inner-box {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color:var(--white-bg-second);
+    padding: 20px;
+}
+/* -----------------první oddělení, box a vnitřek---------------*/ 
+.main-text-box {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    width: 50%;
+    background-color: var(--white-bg);
+}
+
+.main-inner-box:nth-of-type(3) .main-text-box{
+    margin-right: 40px;
+    flex-grow: 1;
+}
+
+.h3 {
+    text-align: left;
+    font: normal normal normal 36px/42px Raleway;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    margin-left: 40px;
+    margin-right: 100px;
+    padding-top: 50px;
+}
+.main-text {
+    text-align: left;
+    font: normal normal normal 16px/22px Open Sans;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    width: 50%;
+    padding: 20px 0 10px 50px;
+}
+
+.hr {
+    border: 2px solid #FB3B64;
+    opacity: 1;
+    width: 200px;
+    position: relative;
+    left: -120px;
+    margin-bottom: 40px;
+}
+
+.main-inner-box:nth-of-type(2) .hr {
+    border: 2px solid var(--blue-elements-borders);
+}
+
+.main-inner-box:nth-of-type(3) .hr {
+    border: 2px solid var(--green-elements);
+    left: -150px;
+}
+
+.main-picture-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background-color: var(--white-bg);
+}
+
+.main-picture {
+  max-width: 290px;
+  max-height: 200px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  left: 50px;
+}
+
+.main-picture-bg {
+    background: #FB3B64 0% 0% no-repeat padding-box;
+    border-radius: 41px;
+    opacity: 1;
+    width: 130px;
+    height: 130px;
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    align-self: center;
+    position:relative;
+    right:60px;
+    top: -30px;
+}
+.main-inner-box:nth-of-type(2) .main-picture-bg {
+    background: var(--blue-elements-borders);
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    right: 200px; 
+}
+
+.main-inner-box:nth-of-type(3) .main-picture-box {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 40%; 
+    height: auto; 
+    background-color: #55DFB4; 
+    padding: 0;
+}
+.main
+/*---------------------tady začínají pricing------------------*/
+.pricing-inner-box {
+    width: 1352px;
+    box-shadow: 0px 3Px 6px #00000029;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-pricing {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 1352px;
+}
+
+.pricing {
+    text-align: center;
+    font: normal normal normal 36px/42px Raleway;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+.pricing-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pricing-column-box {
+    width: 250px;
+    border: 1px solid #FB3B64;
+    border-radius: 18px;
+    text-align: center;
+    margin: 5px;
+}
+/*---------------------tady začínají pricing blocks------------------*/
+
+.h4 {
+    text-align: left;
+    font: normal normal bold 20px/1px Raleway;
+    color: #13253B;
+    text-align: center;
+    padding-top: 50px;
+}
+.price {
+    font: normal normal 300 46px/2px Open Sans;
+    letter-spacing: 0px;
+    color: #FB3B64;
+    font-size: 46px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.pricing-line {
+    text-align: center;
+    font: normal normal normal 14px/41px Open Sans;
+    letter-spacing: 0px;
+    color: #000000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.checked {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+
+.unchecked {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+
+.button {
+    background-color: var(--red-small-btn);
+    border-radius: 15px;
+    color: var(--white-bg);
+    width: 90px;
+    height: 25px;
+    padding-bottom: 12px;
+    text-align: center;
+    font: normal normal bold 13px/41px Open Sans;
+    margin-left: 30%;
+    margin-bottom: -20px;
+}
+.text-pricing {
+    font: normal normal bold 12px/1px Raleway;
+    padding-bottom: 20px;
+}
+
+div .price:nth-of-type(1) {
+    color:var(--blue-elements-borders);
+}
+
+.pricing-box:nth-of-type(2) .price {
+    color: var(--blue-elements-borders);
+}
+
+.pricing-box:nth-of-type(2) .pricing-column-box {
+    border: 1px solid var(--blue-elements-borders);
+    width: 300px;
+}
+
+.pricing-box:nth-of-type(2) .button {
+    background-color: var(--blue-elements-borders);
+}
+
+.pricing-box:nth-of-type(3) .price {
+    color:var(--green-elements);
+}
+
+.pricing-box:nth-of-type(3) .button {
+    background-color: var(--green-elements);
+}
+
+.pricing-box:nth-of-type(3) .pricing-column-box {
+    border: 1px solid var(--green-elements);
+}
+/*---------------------tady začínají questions------------------*/
+.question-main-box {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+/* tady zacíná levy box */
+.box-1 {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+.box-2 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 50px;
+}
+
+.e-mail-box {
+    justify-content: flex-start;
+}
+
+.phone-box {
+    justify-content: flex-end;
+}
+
+a {
+    text-align: left;
+    font: normal normal 600 16px/22px Open Sans;
+    letter-spacing: 0px;
+    color: #A5A5A5;
+    text-decoration: none;
+}
+
+.mail-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.phone-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.text-h1 {
+    text-align: left;
+    font: normal normal normal 49px/57px Raleway;
+    letter-spacing: 0px;
+    color: #000000;
+    display: inline;
+    margin-top: 50px;
+}
+
+.sentence {
+    font: normal normal normal 16px/22px Open Sans;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-top: 30px;
+    margin-right:30px;
+}
+
+.main-mail-box {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.form-name, .form-e-mail {
+    text-align: left;
+    font: normal normal bold 15px/20px Open Sans;
+    letter-spacing: 3.28px;
+    color: #08A6E4;
+    margin-top: 100px;
+}
+
+.input-name, .input-e-mail {
+    width: 100%;
+    border: none;
+    height: 50px;
+    font: normal normal 15px/20px Open Sans;
+}
+
+.input-name:focus, .input-e-mail:focus {
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.conditions {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 230px;
+}
+
+.conditions .text {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    padding-left: 30px;
+    align-self: flex-start;
+}
+
+.main-mail-box a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.main-mail-box .button {
+    background-color: var(--blue-elements-borders);
+    color: var(--white-bg);
+    width: 150px;
+    height: 25px;
+    margin-bottom: 40px;
+    text-align: center;
+    font: normal normal bold 13px/41px Open Sans;
+}
+
+.footer {
+    width: 1352px;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    box-shadow: 0px -5px 40px #00000029;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: center;
+    text-align: left;
+    padding-left: 130px;
+}
+
+.footer-left .logo {
+    justify-content: flex-start;
+}
+
+.footer-left .text {
+    padding: 0;
+    margin: 0;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+    text-align: left;
+    padding-right: 130px;
+}
+
+.social-icon{
+    display: flex;
+    flex-direction: row;
+}
+
+.social-icon img {
+    width: 30px;
+    padding: 5px;
+
+}

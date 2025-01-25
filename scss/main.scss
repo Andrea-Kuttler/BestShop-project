@@ -1,6 +1,18 @@
-@import "settings/fonts";
-@import "settings/colors";
-@import "settings/mixins";
 @import "generic/reset";
+
+@import "settings/colors";
+@import "settings/fonts";
+@import "settings/index";
+@import "settings/mixins";
+
+@import "elements/base";
+@import "elements/buttons";
+@import "elements/header";
+@import "elements/opening";
+@import "elements/statistics";
+@import "elements/benefits";
+@import "elements/pricing";
+@import "elements/contact";
+@import "elements/form";
 @import "elements/footer";
 @import "elements/calculator";

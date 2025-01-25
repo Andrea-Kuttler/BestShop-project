@@ -1,134 +1,149 @@
-class Calculator {
-  constructor() {
-    // DOM prvky (elementy HTML, se kterými budeme pracovat)
-    this.productInput = document.getElementById('products'); // Pole pro zadání počtu produktů
-    this.orderInput = document.getElementById('orders'); // Pole pro zadání počtu objednávek
-    this.packageSelect = document.getElementById('package'); // Rozbalovací nabídka pro výběr balíčku
-    this.packageDropdown = document.querySelector('.select__dropdown'); // Možnosti v rozbalovací nabídce
-    this.accountingCheckbox = document.getElementById('accounting'); // Checkbox pro účetnictví
-    this.terminalCheckbox = document.getElementById('terminal'); // Checkbox pro pronájem terminálu
-    this.summaryItems = document.querySelectorAll('.list__item'); // Položky v sekci shrnutí
-    this.totalPriceElement = document.querySelector('.total__price'); // Element pro zobrazení celkové ceny
-    
-    // Ceník jednotlivých služeb a produktů
-    this.prices = {
-      product: 0.5, // Cena za 1 produkt
-      order: 0.5, // Cena za 1 objednávku
-      packages: {
-        basic: 10, // Cena základního balíčku
-        professional: 20, // Cena profesionálního balíčku
-        premium: 30, // Cena prémiového balíčku
-      },
-      accounting: 10, // Cena za účetnictví
-      terminal: 10, // Cena za pronájem terminálu
-    };
+function Calculator(form, summary) {
+  this.prices = {
+    products: 0.5,
+    orders: 0.25,
+    package: {
+      basic: 0,
+      professional: 25,
+      premium: 60
+    },
+    accounting: 35,
+    terminal: 5
+  };
 
-    // Výchozí stav kalkulačky
-    this.state = {
-      products: 0, // Počet produktů
-      orders: 0, // Počet objednávek
-      package: '', // Vybraný balíček
-      accounting: false, // Zda je účetnictví vybráno
-      terminal: false, // Zda je terminál vybrán
-    };
+  /**
+   * Inputs / Select / Checkbox
+   */
+  this.form = {
+    products: form.querySelector("#products"),
+    orders: form.querySelector("#orders"),
+    package: form.querySelector("#package"),
+    accounting: form.querySelector("#accounting"),
+    terminal: form.querySelector("#terminal")
+  };
 
-    // Připojení metod a inicializace aplikace
-    this.init();
-  }
-
-  // Inicializace kalkulačky
-  init() {
-    this.addEventListeners(); // Přidání naslouchání událostem
-    this.updateSummary(); // Aktualizace sekce shrnutí
-  }
-
-  // Přidání naslouchání událostem
-  addEventListeners() {
-    // Ověření a aktualizace při zadání hodnot do polí
-    this.productInput.addEventListener('input', () => 
-      this.updateState('products', this.validateInput(this.productInput.value))
-    );
-    this.orderInput.addEventListener('input', () => 
-      this.updateState('orders', this.validateInput(this.orderInput.value))
-    );
-
-    // Otevření nebo zavření rozbalovací nabídky
-    this.packageSelect.addEventListener('click', () => this.toggleDropdown());
-    this.packageDropdown.addEventListener('click', (event) => this.selectPackage(event));
-
-    // Aktualizace při změně stavu checkboxů
-    this.accountingCheckbox.addEventListener('change', () => 
-      this.updateState('accounting', this.accountingCheckbox.checked)
-    );
-    this.terminalCheckbox.addEventListener('change', () => 
-      this.updateState('terminal', this.terminalCheckbox.checked)
-    );
-  }
-
-  // Ověření vstupu - pouze kladná čísla
-  validateInput(value) {
-    const parsedValue = parseInt(value, 10); // Převod na celé číslo
-    return parsedValue > 0 ? parsedValue : 0; // Pokud je číslo kladné, vrátí ho, jinak 0
-  }
-
-  // Aktualizace stavu aplikace
-  updateState(key, value) {
-    this.state[key] = value; // Aktualizace příslušné hodnoty ve stavu
-    this.updateSummary(); // Aktualizace sekce shrnutí
-  }
-
-  // Otevření/zavření rozbalovací nabídky
-  toggleDropdown() {
-    this.packageDropdown.classList.toggle('open'); // Přepíná třídu "open" pro zobrazení/skrývání
-  }
-
-  // Výběr balíčku z nabídky
-  selectPackage(event) {
-    const selectedValue = event.target.dataset.value; // Získání hodnoty z atributu data-value
-    if (selectedValue) {
-      this.updateState('package', selectedValue); // Aktualizace vybraného balíčku
-      this.packageSelect.querySelector('.select__input').innerText = selectedValue; // Zobrazení vybraného balíčku
-      this.packageDropdown.classList.remove('open'); // Zavření nabídky
+  /**
+   * Summary elements
+   */
+  this.summary = {
+    list: summary.querySelector("ul"),
+    items: summary.querySelector("ul").children,
+    total: {
+      container: summary.querySelector("#total-price"),
+      price: summary.querySelector(".total__price")
     }
-  }
+  };
 
-  // Aktualizace sekce shrnutí
-  updateSummary() {
-    // Výpočet jednotlivých položek
-    const productsPrice = this.state.products * this.prices.product;
-    const ordersPrice = this.state.orders * this.prices.order;
-    const packagePrice = this.prices.packages[this.state.package] || 0;
-    const accountingPrice = this.state.accounting ? this.prices.accounting : 0;
-    const terminalPrice = this.state.terminal ? this.prices.terminal : 0;
 
-    // Aktualizace HTML pro každou položku
-    this.updateSummaryItem('products', this.state.products, productsPrice);
-    this.updateSummaryItem('orders', this.state.orders, ordersPrice);
-    this.updateSummaryItem('package', this.state.package, packagePrice);
-    this.updateSummaryItem('accounting', this.state.accounting ? 'Yes' : '', accountingPrice);
-    this.updateSummaryItem('terminal', this.state.terminal ? 'Yes' : '', terminalPrice);
-
-    // Výpočet celkové ceny
-    const totalPrice = productsPrice + ordersPrice + packagePrice + accountingPrice + terminalPrice;
-
-    // Zobrazení celkové ceny
-    this.totalPriceElement.innerText = `$${totalPrice.toFixed(2)}`;
-  }
-
-  // Aktualizace konkrétní položky v sekci shrnutí
-  updateSummaryItem(id, value, price) {
-    const item = document.querySelector(`.list__item[data-id="${id}"]`);
-    if (value) {
-      item.style.display = 'flex'; // Zobrazení položky
-      item.querySelector('.item__calc').innerText = value;
-      item.querySelector('.item__price').innerText = `$${price}`;
-    } else {
-      item.style.display = 'none'; // Skrytí položky, pokud není relevantní
-    }
-  }
+  // Init
+  this.addEvents();
 }
 
-// Inicializace kalkulačky po načtení stránky
-document.addEventListener('DOMContentLoaded', () => {
-  new Calculator();
+Calculator.prototype.addEvents = function () {
+  // Inputs
+  this.form.products.addEventListener("change", this.inputEvent.bind(this));
+  this.form.products.addEventListener("keyup", this.inputEvent.bind(this));
+  this.form.orders.addEventListener("change", this.inputEvent.bind(this));
+  this.form.orders.addEventListener("keyup", this.inputEvent.bind(this));
+
+  // Select
+  this.form.package.addEventListener("click", this.selectEvent.bind(this));
+
+  // Checkboxes
+  this.form.accounting.addEventListener("change", this.checkboxEvent.bind(this));
+  this.form.terminal.addEventListener("change", this.checkboxEvent.bind(this));
+};
+
+Calculator.prototype.updateTotal = function () {
+  const show = this.summary.list.querySelectorAll(".open").length > 0;
+
+  if (show) {
+    const productSum = this.form.products.value < 0 ? 0 : this.form.products.value * this.prices.products;
+    const ordersSum = this.form.orders.value < 0 ? 0 : this.form.orders.value * this.prices.orders;
+    const packagePrice = this.form.package.dataset.value.length === 0 ? 0 : this.prices.package[this.form.package.dataset.value];
+    const accounting = this.form.accounting.checked ? this.prices.accounting : 0;
+    const terminal = this.form.terminal.checked ? this.prices.terminal : 0;
+
+    this.summary.total.price.innerText = "$" + (productSum + ordersSum + packagePrice + accounting + terminal);
+
+    this.summary.total.container.classList.add("open");
+  } else {
+    this.summary.total.container.classList.remove("open");
+  }
+};
+
+Calculator.prototype.updateSummary = function (id, calc, total, callback) {
+  const summary = this.summary.list.querySelector("[data-id=" + id + "]");
+  const summaryCalc = summary.querySelector(".item__calc");
+  const summaryTotal = summary.querySelector(".item__price");
+
+  summary.classList.add("open");
+
+  if (summaryCalc !== null) {
+    summaryCalc.innerText = calc;
+  }
+
+  summaryTotal.innerText = "$" + total;
+
+  if (typeof callback === "function") {
+    callback(summary, summaryCalc, summaryTotal);
+  }
+};
+
+Calculator.prototype.inputEvent = function (e) {
+  const id = e.currentTarget.id;
+  const value = e.currentTarget.value;
+  const singlePrice = this.prices[id];
+  const totalPrice = value * singlePrice;
+
+  this.updateSummary(id, value + " * $" + singlePrice, totalPrice, function (item, calc, total) {
+    if (value < 0) {
+      calc.innerHTML = null;
+      total.innerText = "Value should be greater than 0";
+    }
+
+    if (value.length === 0) {
+      item.classList.remove("open");
+    }
+  });
+
+  this.updateTotal();
+};
+
+
+Calculator.prototype.selectEvent = function (e) {
+  this.form.package.classList.toggle("open");
+
+  const value = typeof e.target.dataset.value !== "undefined" ? e.target.dataset.value : "";
+  const text = typeof e.target.dataset.value !== "undefined" ? e.target.innerText : "Choose package";
+
+  if (value.length > 0) {
+    this.form.package.dataset.value = value;
+    this.form.package.querySelector(".select__input").innerText = text;
+
+    this.updateSummary("package", text, this.prices.package[value]);
+    this.updateTotal();
+  }
+};
+
+Calculator.prototype.checkboxEvent = function (e) {
+  const checkbox = e.currentTarget;
+  const id = checkbox.id;
+  const checked = e.currentTarget.checked;
+
+  this.updateSummary(id, undefined, this.prices[id], function (item) {
+    if (!checked) {
+      item.classList.remove("open");
+    }
+  });
+
+  this.updateTotal();
+};
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector(".calc__form");
+  const summary = document.querySelector(".calc__summary");
+
+  new Calculator(form, summary);
 });
